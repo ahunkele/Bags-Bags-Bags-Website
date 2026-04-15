@@ -1,0 +1,30 @@
+.cascade-container {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  user-select: none;
+  z-index: 1;
+}
+
+.cascade-item {
+  position: absolute;
+  left: 50%;
+  transform: translateX(calc(-50% + var(--repulse-x, 0px)));
+  transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  white-space: nowrap;
+  font-size: clamp(2.5rem, 7vw, 6rem);
+  letter-spacing: 0.06em;
+  line-height: 1.1;
+  color: rgba(255, 255, 255, 0.07);
+  -webkit-text-stroke: 0px transparent;
+  animation: cascade linear infinite;
+}
+
+@keyframes cascade {
+  0%   { top: -15%; opacity: 0; }
+  6%   { opacity: 1; }
+  88%  { opacity: 1; }
+  100% { top: 105%; opacity: 0; }
+}
+

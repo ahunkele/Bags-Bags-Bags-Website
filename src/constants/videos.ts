@@ -1,0 +1,18 @@
+export const HERO_VIDEOS: string[] = [
+  '/src/assets/videos/IMG_2305.MOV',
+  '/src/assets/videos/IMG_2306.MOV',
+  '/src/assets/videos/IMG_2307.MOV',
+  '/src/assets/videos/IMG_2308.MOV',
+  '/src/assets/videos/IMG_2309.MOV',
+  '/src/assets/videos/IMG_2310.MOV',
+  '/src/assets/videos/IMG_2311.MOV',
+  '/src/assets/videos/IMG_2312.MOV',
+  '/src/assets/videos/IMG_2313.MOV',
+  '/src/assets/videos/IMG_2315.MOV',
+  '/src/assets/videos/IMG_2316.MOV',
+  '/src/assets/videos/IMG_2317.MOV',
+  '/src/assets/videos/IMG_2319.MOV',
+  '/src/assets/videos/IMG_2320.MOV',
+  '/src/assets/videos/IMG_2321.MOV',
+  '/src/assets/videos/IMG_2322.MOV',
+]

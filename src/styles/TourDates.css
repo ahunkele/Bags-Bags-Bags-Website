@@ -1,0 +1,75 @@
+.tour-dates {
+  background: #0d0b0b;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 80px 24px 60px;
+}
+
+.tour-dates__grid {
+  width: 100%;
+  max-width: 900px;
+  display: flex;
+  flex-direction: column;
+}
+
+.tour-dates__row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 2fr 1fr;
+  padding: 16px 0;
+  color: #ffffffc4;
+  font-family: var(--ITCAvantGardeStdBold);
+  font-size: 1rem;
+  align-items: center;
+  text-align: center;
+}
+
+.tour-dates__row--header {
+  color: #ffffff60;
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding-bottom: 12px;
+  margin-bottom: 4px;
+  border-bottom: 1px solid #444;
+}
+
+.tour-dates__venue-link {
+  color: #ffffffc4;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.tour-dates__venue-link:hover {
+  color: #fff;
+  text-decoration: underline;
+}
+
+.tour-dates__ticket-link {
+  color: #fff;
+  text-decoration: none;
+  border: 1px solid #fff;
+  padding: 6px 14px;
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.tour-dates__ticket-link:hover {
+  background: #fff;
+  color: #000;
+}
+
+.tour-dates__header {
+  font-family: var(--Ronda);
+  color: #ffffffc4;
+  font-size: clamp(3rem, 5vw, 4rem);
+  font-weight: normal;
+  text-align: center;
+  text-transform: none;
+  letter-spacing: normal;
+  -webkit-text-stroke: 0;
+  margin: 2rem 0 6rem;
+  line-height: 1;
+}

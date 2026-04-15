@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(curl -s \"https://www.vboysstockholm.com/\")",
+      "WebFetch(domain:www.vboysstockholm.com)"
+    ]
+  }
+}
