@@ -1,8 +1,6 @@
 .audio-player {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%) perspective(900px);
+  position: relative;
+  transform: perspective(900px);
   transform-style: preserve-3d;
   width: 340px;
   color: #fffef0;

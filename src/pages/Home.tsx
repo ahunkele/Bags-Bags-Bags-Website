@@ -16,13 +16,15 @@ export default function Home() {
       <div className="hero">
         <ShatteredHero />
         <HeroText />
-        <GlitchText />
         <div className="hero__socials">
           <a href="https://open.spotify.com/artist/0qlOwnzPBOKKWvUNprgGwl" target="_blank" rel="noopener noreferrer" className="hero__social-link" aria-label="Spotify"><FaSpotify /></a>
           <a href="https://bagsbagsbags.bandcamp.com" target="_blank" rel="noopener noreferrer" className="hero__social-link" aria-label="Bandcamp"><FaBandcamp /></a>
           <a href="https://www.instagram.com/bags.bags.bags.band/" target="_blank" rel="noopener noreferrer" className="hero__social-link" aria-label="Instagram"><FaInstagram /></a>
         </div>
-        <AudioPlayer />
+        <div className="hero__player-group">
+          <GlitchText />
+          <AudioPlayer />
+        </div>
       </div>
       <div className="below-hero">
         <LatestUpdates />

@@ -9,7 +9,7 @@ function formatTime(seconds: number): string {
   return `${m}:${s.toString().padStart(2, '0')}`
 }
 
-const BASE_TRANSFORM = 'translate(-50%, -50%) perspective(900px)'
+const BASE_TRANSFORM = 'perspective(900px)'
 
 
 export default function AudioPlayer() {
