@@ -18,16 +18,21 @@ export default function TourDates() {
       <div className="tour-dates__grid">
         <div className="tour-dates__row tour-dates__row--header">
           <span>Date</span>
-          <span>State</span>
-          <span>City</span>
+          <span className="tour-dates__location--mobile">Location</span>
+          <span className="tour-dates__location--desktop">State</span>
+          <span className="tour-dates__location--desktop">City</span>
           <span>Venue</span>
           <span>Tickets</span>
         </div>
         {dates.map((show) => (
           <div key={show._id} className="tour-dates__row">
             <span>{show.date}</span>
-            <span>{show.state}</span>
-            <span>{show.city}</span>
+            <span className="tour-dates__location--mobile">
+              <span className="tour-dates__city">{show.city}</span>
+              <span className="tour-dates__state-sub">{show.state}</span>
+            </span>
+            <span className="tour-dates__location--desktop">{show.state}</span>
+            <span className="tour-dates__location--desktop">{show.city}</span>
             <span>
               <a
                 href={show.venueLink}

@@ -3,17 +3,23 @@ import { fetchUpdates } from '../../services/updates.service'
 import type { Update } from '../../types'
 import './LatestUpdates.css'
 
+const PAGE_SIZE = 3
+
 export default function LatestUpdates() {
-  const [updates, setUpdates] = useState<Update[]>([])
+  const [updates, setUpdates]   = useState<Update[]>([])
+  const [visible, setVisible]   = useState(PAGE_SIZE)
 
   useEffect(() => {
     fetchUpdates().then(setUpdates)
   }, [])
 
+  const shown    = updates.slice(0, visible)
+  const hasMore  = visible < updates.length
+
   return (
     <section className="latest-updates">
       <h2 className="latest-updates__header">Latest Updates</h2>
-      {updates.map((update) => (
+      {shown.map((update) => (
         <article key={update._id} className="update-card">
           {update.image?.asset?.url && (
             <div className="update-card__image-wrap">
@@ -31,6 +37,16 @@ export default function LatestUpdates() {
           </div>
         </article>
       ))}
+
+      {hasMore && (
+        <button
+          className="latest-updates__load-more"
+          onClick={() => setVisible(v => v + PAGE_SIZE)}
+        >
+          Load more
+          <span className="latest-updates__arrow">↓</span>
+        </button>
+      )}
     </section>
   )
 }

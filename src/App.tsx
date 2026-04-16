@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
 import Home from './pages/Home'
 import TourDates from './pages/TourDates'
 import Videos from './pages/Videos'
+import Newsletter from './pages/Newsletter'
 import './styles/transitions.css'
 
 function AnimatedRoutes() {
@@ -13,6 +14,7 @@ function AnimatedRoutes() {
         <Route path="/" element={<Home />} />
         <Route path="/tour" element={<TourDates />} />
         <Route path="/videos" element={<Videos />} />
+        <Route path="/newsletter" element={<Newsletter />} />
       </Routes>
     </div>
   )

@@ -61,6 +61,33 @@
   color: #000;
 }
 
+.tour-dates__location--mobile { display: none; }
+
+@media (max-width: 600px) {
+  .tour-dates__row {
+    grid-template-columns: 1fr 1fr 2fr 1fr;
+    font-size: 0.75rem;
+  }
+
+  .tour-dates__location--mobile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .tour-dates__location--desktop { display: none; }
+
+  .tour-dates__city {
+    font-weight: 700;
+  }
+
+  .tour-dates__state-sub {
+    font-size: 0.65rem;
+    opacity: 0.55;
+    margin-top: 2px;
+  }
+}
+
 .tour-dates__header {
   font-family: var(--Ronda);
   color: #ffffffc4;

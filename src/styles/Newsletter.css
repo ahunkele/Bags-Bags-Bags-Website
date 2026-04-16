@@ -1,0 +1,107 @@
+.newsletter {
+  background: #0d0b0b;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 80px 24px 60px;
+}
+
+.newsletter__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  max-width: 560px;
+  width: 100%;
+  margin-top: 6rem;
+}
+
+.newsletter__header {
+  font-family: var(--Ronda);
+  color: #fffef0;
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-weight: normal;
+  line-height: 1.1;
+  margin-bottom: 1.25rem;
+}
+
+.newsletter__sub {
+  font-family: var(--NeueMachina);
+  color: #ffffff70;
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 3rem;
+}
+
+.newsletter__form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+}
+
+.newsletter__input {
+  width: 100%;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+  color: #fffef0;
+  font-family: var(--NeueMachina);
+  font-size: 1rem;
+  letter-spacing: 0.06em;
+  padding: 12px 4px;
+  outline: none;
+  text-align: center;
+  transition: border-color 0.2s ease;
+}
+
+.newsletter__input::placeholder {
+  color: rgba(255, 255, 255, 0.25);
+}
+
+.newsletter__input:focus {
+  border-bottom-color: rgba(255, 255, 255, 0.7);
+}
+
+.newsletter__btn {
+  margin-top: 8px;
+  background: none;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  color: #fffef0;
+  font-family: var(--NeueMachina);
+  font-size: 0.75rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 12px 36px;
+  cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+.newsletter__btn:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.7);
+}
+
+.newsletter__btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.newsletter__success {
+  font-family: var(--NeueMachina);
+  color: #fffef0;
+  font-size: 0.85rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  opacity: 0.7;
+}
+
+.newsletter__error {
+  font-family: var(--NeueMachina);
+  color: #ff6b6b;
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+}
