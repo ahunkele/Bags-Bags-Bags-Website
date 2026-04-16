@@ -437,6 +437,45 @@
   }
 }
 
+/* ── Landscape phone ── */
+@media (max-height: 500px) and (min-width: 601px) {
+  .audio-player {
+    width: 240px;
+  }
+
+  .audio-player__panel {
+    max-height: 92vh;
+    overflow-y: auto;
+  }
+
+  .audio-player__cover-wrap {
+    display: none;
+  }
+
+  .audio-player__header {
+    padding: 8px 16px;
+    font-size: 0.6rem;
+  }
+
+  .audio-player__info {
+    padding: 8px 14px 0;
+  }
+
+  .audio-player__progress {
+    padding: 8px 14px 0;
+  }
+
+  .audio-player__controls {
+    padding: 8px 14px;
+    gap: 20px;
+  }
+
+  .audio-player__tracklist {
+    max-height: 100px;
+    overflow-y: auto;
+  }
+}
+
 /* ── Mobile ── */
 @media (max-width: 600px) {
   .audio-player {
