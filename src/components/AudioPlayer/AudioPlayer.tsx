@@ -298,6 +298,10 @@ export default function AudioPlayer() {
   }
 
   const minimize = () => {
+    if (window.matchMedia('(max-width: 600px)').matches) {
+      setExpanded(false)
+      return
+    }
     setClosing(true)
     setTimeout(() => {
       setClosing(false)
