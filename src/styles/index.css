@@ -50,3 +50,9 @@ html {
 body {
   background: #000;
 }
+
+@media (max-width: 600px) {
+  body {
+    padding-bottom: 66px; /* clear the fixed mini bar */
+  }
+}
