@@ -18,7 +18,7 @@ export default function AudioPlayer() {
   const [playing, setPlaying]           = useState<boolean>(false)
   const [progress, setProgress]         = useState<number>(0)
   const [duration, setDuration]         = useState<number>(0)
-  const [expanded, setExpanded]         = useState<boolean>(true)
+  const [expanded, setExpanded]         = useState<boolean>(() => !window.matchMedia('(max-width: 600px)').matches)
   const [closing, setClosing]           = useState<boolean>(false)
   const audioRef     = useRef<HTMLAudioElement>(null)
   const playerRef    = useRef<HTMLDivElement>(null)
@@ -30,6 +30,7 @@ export default function AudioPlayer() {
   const auraRafRef     = useRef<number>(0)
   const playingRef     = useRef(false)
   const tiltShadowRef  = useRef<string>('')
+  const touchStartY    = useRef<number>(0)
 
   // Disable tilt when scrolled off hero
   useEffect(() => {
@@ -304,6 +305,15 @@ export default function AudioPlayer() {
     }, 380)
   }
 
+  const handleHandleTouchStart = (e: React.TouchEvent) => {
+    touchStartY.current = e.touches[0].clientY
+  }
+
+  const handleHandleTouchEnd = (e: React.TouchEvent) => {
+    const delta = e.changedTouches[0].clientY - touchStartY.current
+    if (delta > 60) minimize()
+  }
+
   const progressPct = duration ? (progress / duration) * 100 : 0
 
   if (!current) return null
@@ -317,24 +327,26 @@ export default function AudioPlayer() {
       onMouseLeave={handleMouseLeave}
     >
 
-      {/* Mini bar — mobile only, shown when collapsed */}
+      {/* Mini bar — shown when collapsed */}
       {!expanded && (
         <div className="audio-player__bar" onClick={() => setExpanded(true)}>
-          <div className="audio-player__bar-handle" />
+          <div className="audio-player__bar-progress">
+            <div className="audio-player__bar-progress-fill" style={{ width: `${progressPct}%` }} />
+          </div>
           <div className="audio-player__bar-content">
-            <button className="audio-player__btn" onClick={e => { e.stopPropagation(); setCurrentIndex(prev => Math.max(0, prev - 1)) }}>
-              &#9664;&#9664;
-            </button>
-            <button className="audio-player__btn audio-player__btn--play" onClick={e => { e.stopPropagation(); togglePlay() }}>
-              {playing ? '❚❚' : '▶'}
-            </button>
-            <button className="audio-player__btn" onClick={e => { e.stopPropagation(); setCurrentIndex(prev => Math.min(tracks.length - 1, prev + 1)) }}>
-              &#9654;&#9654;
-            </button>
-            <span className="audio-player__bar-title">{current.title}</span>
             {current.coverArt?.asset?.url && (
               <img src={current.coverArt.asset.url} alt={current.title} className="audio-player__bar-cover" />
             )}
+            <div className="audio-player__bar-info">
+              <span className="audio-player__bar-title">{current.title}</span>
+              <span className="audio-player__bar-artist">{current.artist}</span>
+            </div>
+            <button
+              className="audio-player__btn audio-player__btn--play"
+              onClick={e => { e.stopPropagation(); togglePlay() }}
+            >
+              {playing ? '❚❚' : '▶'}
+            </button>
           </div>
         </div>
       )}
@@ -347,7 +359,12 @@ export default function AudioPlayer() {
           <div className="audio-player__sheen" />
 
           {/* Drag handle */}
-          <div className="audio-player__handle-wrap" onClick={minimize}>
+          <div
+            className="audio-player__handle-wrap"
+            onClick={minimize}
+            onTouchStart={handleHandleTouchStart}
+            onTouchEnd={handleHandleTouchEnd}
+          >
             <div className="audio-player__handle" />
           </div>
 
