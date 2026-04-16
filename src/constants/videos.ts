@@ -8,7 +8,6 @@ export const HERO_VIDEOS: string[] = [
   '/videos/IMG_2311.MOV',
   '/videos/IMG_2312.MOV',
   '/videos/IMG_2313.MOV',
-  '/videos/IMG_2315.MOV',
   '/videos/IMG_2316.MOV',
   '/videos/IMG_2317.MOV',
   '/videos/IMG_2319.MOV',
