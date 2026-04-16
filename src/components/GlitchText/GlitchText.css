@@ -1,7 +1,9 @@
 .glitch-text {
+  position: relative;
+  display: inline-block;
   font-family: var(--Ronda);
   font-size: clamp(2.8rem, 9vw, 7rem);
-  color: #fffef0;
+  color: rgba(255, 254, 240, 0.664);
   letter-spacing: 0.1em;
   text-transform: uppercase;
   white-space: nowrap;
@@ -9,8 +11,20 @@
   user-select: none;
   text-align: center;
   text-shadow:
-    0 0 30px rgba(255, 255, 255, 0.15),
-    0 0 80px rgba(255, 255, 255, 0.06);
+    0 0 30px rgba(146, 38, 38, 0.5),
+    0 0 80px rgba(255, 255, 255, 0.3);
+}
+
+
+/* One-shot breath when scramble settles */
+.glitch-text--breathing {
+  animation: breath-settle 1.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+@keyframes breath-settle {
+  0%   { scale: 1;    opacity: 0.30; }
+  35%  { scale: 1.05; opacity: 1; }
+  100% { scale: 1;    opacity: 0.85; }
 }
 
 @media (max-width: 600px) {

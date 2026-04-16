@@ -48,13 +48,6 @@
   z-index: 10;
 }
 
-@media (max-width: 600px) {
-  .hero__player-group {
-    /* AudioPlayer is position:fixed on mobile so it breaks out of flow;
-       group collapses to zero height — just let it sit there invisibly */
-    pointer-events: none;
-  }
-}
 
 .hero__socials {
   position: absolute;
@@ -70,7 +63,8 @@
 @media (max-width: 600px) {
   .hero__socials {
     bottom: auto;
-    top: 70px;
+    /* GlitchText is centered at 44% — place socials just below it */
+    top: calc(44% + 36px);
   }
 }
 

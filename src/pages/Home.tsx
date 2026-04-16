@@ -24,10 +24,13 @@ export default function Home() {
           <a href="https://www.instagram.com/bags.bags.bags.band/" target="_blank" rel="noopener noreferrer" className="hero__social-link" aria-label="Instagram"><FaInstagram /></a>
         </div>
         {isMobile && <GlitchText />}
-        <div className="hero__player-group">
-          {!isMobile && <GlitchText />}
-          <AudioPlayer />
-        </div>
+        {isMobile && <AudioPlayer />}
+        {!isMobile && (
+          <div className="hero__player-group">
+            <GlitchText />
+            <AudioPlayer />
+          </div>
+        )}
       </div>
       <div className="below-hero">
         <LatestUpdates />

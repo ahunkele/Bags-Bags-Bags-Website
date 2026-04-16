@@ -1,11 +1,11 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useCallback, useRef } from 'react'
 import './GlitchText.css'
 
 const TARGET = 'BAGS BAGS BAGS'
 const CHARS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ!@#$%&?[]{}|<>\\'
-const FRAME_MS = 45          // ms between scramble frames
-const SCRAMBLE_FRAMES = 18   // ~800ms of full scramble before settling starts
-const SETTLE_PER_CHAR = 2    // frames between each character locking in
+const FRAME_MS = 45
+const SCRAMBLE_FRAMES = 18
+const SETTLE_PER_CHAR = 2
 
 function randomChar() {
   return CHARS[Math.floor(Math.random() * CHARS.length)]
@@ -17,12 +17,19 @@ function scrambledVersion() {
 
 export default function GlitchText() {
   const [displayed, setDisplayed] = useState(scrambledVersion)
+  const [breathing, setBreathing]  = useState(false)
+  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null)
+  const timeoutRef  = useRef<ReturnType<typeof setTimeout>  | null>(null)
 
-  useEffect(() => {
+  const runScramble = useCallback(() => {
+    if (intervalRef.current) clearInterval(intervalRef.current)
+    setBreathing(false)
+
     let frame = 0
     const lastChar = TARGET.length - 1
+    const doneAt   = SCRAMBLE_FRAMES + lastChar * SETTLE_PER_CHAR
 
-    const id = setInterval(() => {
+    intervalRef.current = setInterval(() => {
       frame++
       const result = TARGET.split('').map((char, i) => {
         if (char === ' ') return ' '
@@ -32,18 +39,28 @@ export default function GlitchText() {
 
       setDisplayed(result)
 
-      const doneAt = SCRAMBLE_FRAMES + lastChar * SETTLE_PER_CHAR
       if (frame >= doneAt) {
-        clearInterval(id)
+        clearInterval(intervalRef.current!)
+        intervalRef.current = null
         setDisplayed(TARGET)
+        setBreathing(true)
+        // Re-trigger every 8–18 seconds
+        const delay = 8000 + Math.random() * 10000
+        timeoutRef.current = setTimeout(runScramble, delay)
       }
     }, FRAME_MS)
-
-    return () => clearInterval(id)
   }, [])
 
+  useEffect(() => {
+    runScramble()
+    return () => {
+      if (intervalRef.current) clearInterval(intervalRef.current)
+      if (timeoutRef.current)  clearTimeout(timeoutRef.current)
+    }
+  }, [runScramble])
+
   return (
-    <div className="glitch-text" aria-label="Bags Bags Bags">
+    <div className={`glitch-text ${breathing ? 'glitch-text--breathing' : ''}`} aria-label="Bags Bags Bags">
       {displayed}
     </div>
   )
