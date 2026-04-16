@@ -15,7 +15,7 @@
 
 @media (max-width: 600px) {
   .glitch-text {
-    font-size: clamp(2rem, 11vw, 3.5rem);
-    letter-spacing: 0.08em;
+    font-size: clamp(1.4rem, 8.5vw, 2.4rem);
+    letter-spacing: 0.06em;
   }
 }
