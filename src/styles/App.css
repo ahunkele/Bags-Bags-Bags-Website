@@ -50,10 +50,8 @@
 
 @media (max-width: 600px) {
   .hero__player-group {
-    top: 38%;
-    width: 100%;
-    padding: 0 20px;
-    gap: 0;
+    /* AudioPlayer is fixed to bottom on mobile; group has no visible content */
+    display: none;
   }
 }
 

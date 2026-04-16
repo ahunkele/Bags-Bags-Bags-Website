@@ -9,6 +9,8 @@ import AudioPlayer from '../components/AudioPlayer/AudioPlayer'
 import ShatteredHero from '../components/ShatteredHero/ShatteredHero'
 import '../styles/App.css'
 
+const isMobile = window.matchMedia('(max-width: 600px)').matches
+
 export default function Home() {
   return (
     <div className="App">
@@ -21,8 +23,9 @@ export default function Home() {
           <a href="https://bagsbagsbags.bandcamp.com" target="_blank" rel="noopener noreferrer" className="hero__social-link" aria-label="Bandcamp"><FaBandcamp /></a>
           <a href="https://www.instagram.com/bags.bags.bags.band/" target="_blank" rel="noopener noreferrer" className="hero__social-link" aria-label="Instagram"><FaInstagram /></a>
         </div>
+        {isMobile && <GlitchText />}
         <div className="hero__player-group">
-          <GlitchText />
+          {!isMobile && <GlitchText />}
           <AudioPlayer />
         </div>
       </div>
