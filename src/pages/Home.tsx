@@ -1,6 +1,7 @@
 import NavBar from '../components/NavBar/NavBar'
 import { FaSpotify, FaInstagram, FaBandcamp } from 'react-icons/fa'
 import HeroText from '../components/HeroText/HeroText'
+import GlitchText from '../components/GlitchText/GlitchText'
 import TourDates from './TourDates'
 import LatestUpdates from '../components/LatestUpdates/LatestUpdates'
 import ContactUs from '../components/ContactUs/ContactUs'
@@ -15,6 +16,7 @@ export default function Home() {
       <div className="hero">
         <ShatteredHero />
         <HeroText />
+        <GlitchText />
         <div className="hero__socials">
           <a href="https://open.spotify.com/artist/0qlOwnzPBOKKWvUNprgGwl" target="_blank" rel="noopener noreferrer" className="hero__social-link" aria-label="Spotify"><FaSpotify /></a>
           <a href="https://bagsbagsbags.bandcamp.com" target="_blank" rel="noopener noreferrer" className="hero__social-link" aria-label="Bandcamp"><FaBandcamp /></a>

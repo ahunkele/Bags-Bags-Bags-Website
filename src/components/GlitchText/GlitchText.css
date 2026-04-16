@@ -1,0 +1,26 @@
+.glitch-text {
+  position: absolute;
+  top: 22%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 5;
+  font-family: var(--Ronda);
+  font-size: clamp(2.8rem, 9vw, 7rem);
+  color: #fffef0;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  pointer-events: none;
+  user-select: none;
+  text-shadow:
+    0 0 30px rgba(255, 255, 255, 0.15),
+    0 0 80px rgba(255, 255, 255, 0.06);
+}
+
+@media (max-width: 600px) {
+  .glitch-text {
+    top: 18%;
+    font-size: clamp(2rem, 11vw, 3.5rem);
+    letter-spacing: 0.08em;
+  }
+}
