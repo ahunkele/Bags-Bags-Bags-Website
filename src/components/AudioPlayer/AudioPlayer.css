@@ -374,6 +374,40 @@
   opacity: 0.6;
 }
 
+/* ── Small laptop / short viewport ── */
+@media (max-height: 780px) and (min-width: 601px) {
+  .audio-player {
+    width: 300px;
+  }
+
+  .audio-player__panel {
+    max-height: 85vh;
+    overflow-y: auto;
+  }
+
+  .audio-player__cover-wrap {
+    aspect-ratio: unset;
+    height: 140px;
+  }
+
+  .audio-player__tracklist {
+    max-height: 120px;
+    overflow-y: auto;
+  }
+
+  .audio-player__info {
+    padding: 10px 16px 0;
+  }
+
+  .audio-player__progress {
+    padding: 10px 16px 0;
+  }
+
+  .audio-player__controls {
+    padding: 10px 16px;
+  }
+}
+
 /* ── Mobile ── */
 @media (max-width: 600px) {
   .audio-player {
