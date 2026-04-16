@@ -50,8 +50,9 @@
 
 @media (max-width: 600px) {
   .hero__player-group {
-    /* AudioPlayer is fixed to bottom on mobile; group has no visible content */
-    display: none;
+    /* AudioPlayer is position:fixed on mobile so it breaks out of flow;
+       group collapses to zero height — just let it sit there invisibly */
+    pointer-events: none;
   }
 }
 
