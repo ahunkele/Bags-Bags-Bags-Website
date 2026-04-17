@@ -68,10 +68,15 @@
 }
 
 @media (max-width: 600px) {
+  /* Push flex center up by half the minimized player bar height (64px) */
+  .hero {
+    padding-bottom: 64px;
+  }
+
   .hero__socials {
     bottom: auto;
-    /* GlitchText center is at calc(50% - 33px) — place socials just below */
-    top: calc(50% + 3px);
+    /* Offset 32px upward to stay centered relative to space above the player bar */
+    top: calc(50% - 29px);
   }
 }
 
