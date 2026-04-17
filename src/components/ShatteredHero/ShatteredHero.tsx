@@ -13,6 +13,9 @@ const CELLS: CellConfig[] = [
   { mask: 'linear-gradient(110deg, transparent 56%, black 70%, black 100%)',                 pan: 'pan-up'    },
 ]
 
+// Middle cell (index 1) reveals first; outer cells follow after a delay
+const FADE_DELAYS = [500, 0, 500]
+
 const SWAP_INTERVAL = 9000
 
 function pickRandom(exclude: string[]): string {
@@ -25,16 +28,19 @@ interface VideoCellProps {
   mask: string
   pan: string
   offset: number
+  fadeInDelay: number
 }
 
-function VideoCell({ mask, pan, offset }: VideoCellProps) {
+function VideoCell({ mask, pan, offset, fadeInDelay }: VideoCellProps) {
   const [front, setFront]       = useState<string>(() => pickRandom([]))
   const [back, setBack]         = useState<string>(() => pickRandom([front]))
   const [showBack, setShowBack] = useState<boolean>(false)
+  const [ready, setReady]       = useState<boolean>(false)
 
   const showBackRef = useRef(showBack)
   const frontRef    = useRef(front)
   const backRef     = useRef(back)
+  const revealedRef = useRef(false)
 
   useEffect(() => { showBackRef.current = showBack }, [showBack])
   useEffect(() => { frontRef.current = front }, [front])
@@ -53,6 +59,12 @@ function VideoCell({ mask, pan, offset }: VideoCellProps) {
     return () => clearTimeout(init)
   }, [offset])
 
+  function handleCanPlay() {
+    if (revealedRef.current) return
+    revealedRef.current = true
+    setTimeout(() => setReady(true), fadeInDelay)
+  }
+
   return (
     <div
       className="shattered-hero__cell"
@@ -60,11 +72,12 @@ function VideoCell({ mask, pan, offset }: VideoCellProps) {
     >
       <video
         src={front} autoPlay loop muted playsInline
-        className={`shattered-hero__video ${pan} ${!showBack ? 'shattered-hero__video--visible' : ''}`}
+        onCanPlay={handleCanPlay}
+        className={`shattered-hero__video ${pan} ${ready && !showBack ? 'shattered-hero__video--visible' : ''}`}
       />
       <video
         src={back} autoPlay loop muted playsInline
-        className={`shattered-hero__video ${pan} ${showBack ? 'shattered-hero__video--visible' : ''}`}
+        className={`shattered-hero__video ${pan} ${ready && showBack ? 'shattered-hero__video--visible' : ''}`}
       />
     </div>
   )
@@ -74,7 +87,7 @@ export default function ShatteredHero() {
   return (
     <div className="shattered-hero">
       {CELLS.map((cell, i) => (
-        <VideoCell key={i} mask={cell.mask} pan={cell.pan} offset={i * 2000} />
+        <VideoCell key={i} mask={cell.mask} pan={cell.pan} offset={i * 2000} fadeInDelay={FADE_DELAYS[i]} />
       ))}
       <div className="shattered-hero__overlay" />
     </div>
