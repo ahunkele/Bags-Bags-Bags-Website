@@ -44,12 +44,8 @@
 /* ── Mobile ── */
 @media (max-width: 600px) {
   .glitch-text {
-    position: absolute;
-    /* Center in the visible hero area (full height minus 66px mini bar) */
-    top: calc(50% - 33px);
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 5;
+    position: static;
+    transform: none;
     font-size: clamp(1.8rem, 9vw, 2.8rem);
     letter-spacing: 0.06em;
   }

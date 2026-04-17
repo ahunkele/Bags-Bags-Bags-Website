@@ -68,15 +68,23 @@
 }
 
 @media (max-width: 600px) {
-  /* Push flex center up by half the minimized player bar height (64px) */
-  .hero {
-    padding-bottom: 64px;
+  /* Centered container for GlitchText + socials, offset up by half the 64px player bar */
+  .hero__mobile-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, calc(-50% - 32px));
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+    z-index: 10;
   }
 
-  .hero__socials {
-    bottom: auto;
-    /* Offset 32px upward to stay centered relative to space above the player bar */
-    top: calc(50% - 29px);
+  /* Socials inside the container are a flex item, not absolutely positioned */
+  .hero__mobile-content .hero__socials {
+    position: static;
+    transform: none;
   }
 }
 
