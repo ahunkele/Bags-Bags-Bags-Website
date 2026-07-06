@@ -2,6 +2,8 @@ import { client } from '../lib/sanity'
 import type { TourDate } from '../types'
 
 export async function fetchTourDates(): Promise<TourDate[]> {
-  const today = new Date().toISOString().split('T')[0]
-  return client.fetch<TourDate[]>(`*[_type == "tourDate" && date >= $today] | order(date asc)`, { today })
+  const all = await client.fetch<TourDate[]>(`*[_type == "tourDate"] | order(date asc)`)
+  const today = new Date()
+  today.setHours(0, 0, 0, 0)
+  return all.filter((show) => new Date(show.date) >= today)
 }
